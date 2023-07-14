@@ -16,3 +16,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'inventories'], function () use ($router) {
+    $router->get('/', 'InventoryController@index');
+    $router->post('/', 'InventoryController@store');
+    $router->get('/{id}', 'InventoryController@show');
+    $router->patch('/{id}', 'InventoryController@update');
+    $router->put('/{id}', 'InventoryController@update');
+    $router->delete('/{id}', 'InventoryController@destroy');
+});
